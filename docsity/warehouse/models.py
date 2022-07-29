@@ -48,10 +48,10 @@ class Professor(TimeStampedModel):
 
 
 class Content(TimeStampedModel):
-    university = models.ForeignKey(to=University, on_delete=models.SET_NULL)
-    faculty = models.ForeignKey(to=Faculty, on_delete=models.SET_NULL)
-    course = models.ForeignKey(to=Course, on_delete=models.SET_NULL)
-    year = models.ForeignKey(to=EducationalYear, on_delete=models.SET_NULL)
+    university = models.ForeignKey(to=University, on_delete=models.SET_NULL, null=True)
+    faculty = models.ForeignKey(to=Faculty, on_delete=models.SET_NULL, null=True)
+    course = models.ForeignKey(to=Course, on_delete=models.SET_NULL, null=True)
+    year = models.ForeignKey(to=EducationalYear, on_delete=models.SET_NULL, null=True)
 
 
 class File(TimeStampedModel):
