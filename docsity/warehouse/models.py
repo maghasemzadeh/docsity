@@ -1,6 +1,8 @@
 from django.db import models
 from model_utils.models import TimeStampedModel
 
+from warehouse.lib.enums import ContentType
+
 
 class University(TimeStampedModel):
     name = models.CharField(max_length=511)
@@ -35,5 +37,7 @@ class Content(TimeStampedModel):
     year = models.ForeignKey(to=EducationalYear, on_delete=models.SET_NULL)
 
     file = models.FileField()
+    type = models.PositiveSmallIntegerField(choices=ContentType.choices)
+
 
 # Create your models here.
