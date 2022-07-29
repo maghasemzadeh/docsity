@@ -44,21 +44,20 @@ class Professor(TimeStampedModel):
     birthday_year = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.title} {self.name} {self.family_name}"
+        complete_name = f"{self.name} {self.family_name}"
+        return f"{self.title} {complete_name}"
 
 
 class Content(TimeStampedModel):
-    university = models.ForeignKey(to=University, on_delete=models.SET_NULL)
-    faculty = models.ForeignKey(to=Faculty, on_delete=models.SET_NULL)
-    course = models.ForeignKey(to=Course, on_delete=models.SET_NULL)
-    year = models.ForeignKey(to=EducationalYear, on_delete=models.SET_NULL)
+    university = models.ForeignKey(to=University, on_delete=models.SET_NULL, null=True)
+    faculty = models.ForeignKey(to=Faculty, on_delete=models.SET_NULL, null=True)
+    course = models.ForeignKey(to=Course, on_delete=models.SET_NULL, null=True)
 
 
 class File(TimeStampedModel):
     name = models.CharField(max_length=63)
     file = models.FileField()
     type = models.PositiveSmallIntegerField(choices=ContentType.choices)
-
 
     def __str__(self):
         return self.file.name
