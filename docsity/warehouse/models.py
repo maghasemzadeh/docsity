@@ -44,7 +44,7 @@ class Professor(TimeStampedModel):
     birthday_year = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.title} {self.name} {self.family_name}"
+        return f"{self.title} {self.name + self.family_name}"
 
 
 class Content(TimeStampedModel):
