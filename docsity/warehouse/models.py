@@ -53,6 +53,9 @@ class Content(TimeStampedModel):
     course = models.ForeignKey(to=Course, on_delete=models.SET_NULL)
     year = models.ForeignKey(to=EducationalYear, on_delete=models.SET_NULL)
 
+
+class File(TimeStampedModel):
+    name = models.CharField(max_length=63)
     file = models.FileField()
     type = models.PositiveSmallIntegerField(choices=ContentType.choices)
 
